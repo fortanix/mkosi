@@ -2072,7 +2072,6 @@ SETTINGS = (
         default_factory=lambda ns: f"{ns.distribution}~{ns.release}~{ns.architecture}",
         default_factory_depends=("distribution", "release", "architecture"),
         help="Key to use inside incremental cache directory",
-        universal=True,
     ),
     ConfigSetting(
         dest="package_cache_dir",

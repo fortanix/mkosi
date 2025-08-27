@@ -2806,12 +2806,9 @@ def print_output_size(path: Path) -> None:
 
 
 def cache_tree_paths(config: Config) -> tuple[Path, Path, Path]:
-    fragments = [config.cache_key]
-
-    if config.image:
-        fragments += [config.image]
-
-    key = '~'.join(str(s) for s in fragments)
+    key = config.cache_key
+    if config.image and "@" in key:
+        key = key.rpartition("@")[0] + "@" + config.image
 
     assert config.cache_dir
     return (
